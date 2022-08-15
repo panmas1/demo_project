@@ -11,18 +11,15 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
-public class User 
-{
+@Table(name = "User")
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -30,19 +27,19 @@ public class User
 	@Column(nullable=false)
 	private String userId;
 
-	@Column(nullable=false, length=50)
+	@Column(nullable=false, length=10)
 	@NotEmpty
 	@Size(min=3,message="name should more than two character")
 	private String firstName;
 	
-	@Column(nullable=false, length=50)
+	@Column(nullable=false, length=10)
 	private String lastName;
 	
-	@Column(nullable=false, length=120)
+	@Column(nullable=false, length=20)
 	@NotEmpty
 	@Email
 	private String email;
 	@NotEmpty
-	@Size(min=8,message="password should be 8 character")
+	@Size(min=8,max=30,message="password should be 8 character")
 	private String password;
 }
