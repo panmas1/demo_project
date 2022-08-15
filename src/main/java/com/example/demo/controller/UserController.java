@@ -58,14 +58,14 @@ public class UserController
 		}
 	}
 	
-	@GetMapping("/fetchall")
+	@GetMapping(value = "/alldata")
 	public List<User> retrieveAll()
 	{
 		List<User>user=Servicelayer.retieveAll();
 		return user;
 		
 	}
-	@GetMapping("singleuser/{id}")
+	@GetMapping(value = "/single_User/{id}")
 	public Optional<User> singleUser(@PathVariable long id)
 	{
 	    Optional<User> u=Servicelayer.singleUser(id);
@@ -88,7 +88,7 @@ public class UserController
 	    }
        
          else
-         throw  new UserNotFoundException("Plese enter exist id");
+         throw  new UserNotFoundException("Please enter exist id");
    
     
        
