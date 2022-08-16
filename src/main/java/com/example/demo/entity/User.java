@@ -30,12 +30,12 @@ public class User
 	@Column(nullable=false)
 	private String userId;
 
-	@Column(nullable=false, length=50)
+	@Column(nullable=false, length=10)
 	@NotEmpty
 	@Size(min=3,message="name should more than two character")
 	private String firstName;
 	
-	@Column(nullable=false, length=50)
+	@Column(nullable=false, length=10)
 	private String lastName;
 	
 	@Column(nullable=false, length=120)
