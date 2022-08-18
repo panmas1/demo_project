@@ -77,7 +77,7 @@ public class UserController
 	    
 	}
 
-	@DeleteMapping("/users_delete/{id}")
+	@DeleteMapping("/users_del/{id}")
 	public ResponseEntity<String> deleteSingleData(@PathVariable long id)
 	{
 	    Optional<User> u=Servicelayer.singleUser(id);
