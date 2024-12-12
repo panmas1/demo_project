@@ -3,9 +3,8 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,11 +26,15 @@ import com.example.demo.servicelayer.Servicelayer;
 public class UserController
 {
 
-	@Autowired
+
 	private Servicelayer Servicelayer;
-	
-	
-	@PostMapping("/users")
+
+    public UserController(com.example.demo.servicelayer.Servicelayer servicelayer) {
+        Servicelayer = servicelayer;
+    }
+
+
+    @PostMapping("/users")
 	public ResponseEntity<User> addUser(@Valid @RequestBody User u)
 	{
 		
@@ -86,10 +89,9 @@ public class UserController
 	        Servicelayer.delete(id);
 	        return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
 	    }
-       
-         else
-         throw  new UserNotFoundException("Please enter exist id");
-   
+         else {
+			 throw new UserNotFoundException("Please enter exist id");
+		 }
     
        
 	}

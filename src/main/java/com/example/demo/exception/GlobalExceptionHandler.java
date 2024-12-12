@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
   
       }
 	@ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ApiError> poductNotFoundExceptionHandler(UserNotFoundException e,HttpServletRequest request)
+    public ResponseEntity<ApiError> poductNotFoundExceptionHandler(UserNotFoundException e, HttpServletRequest request)
     {
         
   ApiError error=new ApiError(HttpStatus.NOT_FOUND.value(),new Date(),HttpStatus.NOT_FOUND,e.getMessage(),request.getRequestURI());
